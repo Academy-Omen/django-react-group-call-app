@@ -31,6 +31,8 @@ if DEBUG:
     load_dotenv(dotenv_path=env_path)
 else:
     load_dotenv()
+
+
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 
@@ -90,25 +92,16 @@ WSGI_APPLICATION = "group_call.wsgi.application"
 
 
 # Database
-if DEBUG:
-    database =  {
+
+DATABASES = {
+    "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-else:
-    database = {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_HOST'],
-        'PORT': os.environ['DATABASE_PORT'],
-    }
-
-
-DATABASES = {
-    "default": database
 }
+
+
+
 
 
 # Password validation
