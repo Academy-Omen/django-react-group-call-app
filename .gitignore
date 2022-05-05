@@ -12,6 +12,8 @@ build
 # testing
 coverage
 
+staticfiles
+
 
 # misc
 .DS_Store
