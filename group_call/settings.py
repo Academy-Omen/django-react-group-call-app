@@ -3,6 +3,7 @@ import os
 import django_heroku
 from pathlib import Path
 import environ
+import dj_database_url
 from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,12 +78,18 @@ WSGI_APPLICATION = "group_call.wsgi.application"
 
 
 # Database
-
-DATABASES = {
-    "default": {
+# https://github.com/jazzband/dj-database-url
+DATABASE_URL='postgres://gpcbxgirrmmaop:53014d88828460c86d73261f5a864a582713ec302165fc7637101cedb2b67813@ec2-54-80-122-11.compute-1.amazonaws.com:5432/dfu7u62i6lr1lf'
+if DEBUG:
+    database =  {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
+else:
+    database = dj_database_url.config(default=DATABASE_URL)
+
+DATABASES = {
+    "default": database
 }
 
 
