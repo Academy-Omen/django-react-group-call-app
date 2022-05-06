@@ -17,7 +17,7 @@ environ.Env.read_env(".env")
 DEBUG = env.bool("DEBUG", default=True)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("DJANGO_SECRET_KEY", default=get_random_secret_key())
+SECRET_KEY = env.str("SECRET_KEY", default=get_random_secret_key())
 
 
 
@@ -135,10 +135,13 @@ STATIC_ROOT = BASE_DIR / 'allstatic'
 
 
 # ADDED CUSTOM CONFIGURATION
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Truested Origins
+# CSRF_TRUSTED_ORIGINS = ['https://example.com']
+# https://stackoverflow.com/questions/70285834/forbidden-403-csrf-verification-failed-request-aborted-reason-given-for-fail
+CSRF_TRUSTED_ORIGINS = ['https://ub-classroom.herokuapp.com','https://*.127.0.0.1']
+
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
