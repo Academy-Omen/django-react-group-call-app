@@ -14,6 +14,7 @@ The main technology used here to pull off this project were React (A front-end l
 pip freeze > requirements.txt
 git push heroku main
 python manage.py collectstatic --noinput
+heroku config:set DISABLE_COLLECTSTATIC=1
 
 
 # 
