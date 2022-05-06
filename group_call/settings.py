@@ -14,7 +14,7 @@ env = environ.Env(DEBUG=(int, 0))
 environ.Env.read_env(".env")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = env.bool("DEBUG", default=True)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str("DJANGO_SECRET_KEY", default=get_random_secret_key())
